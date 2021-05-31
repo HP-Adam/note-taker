@@ -1,4 +1,3 @@
-const path = require("path");
 const router = require("express").Router();
 const savedNotes = require("../../db/db.json");
 const { createNote, validateNote } = require("../../lib/notes");
@@ -14,7 +13,7 @@ router.post("/notes", (req, res) => {
   if (!validateNote(req.body)) {
     res.status(400).send("The data is not properly formatted.");
   } else {
-    const notes = createNote(req.body, notesArray);
+    createNote(req.body, notesArray);
     res.json(savedNotes);
   }
 });
